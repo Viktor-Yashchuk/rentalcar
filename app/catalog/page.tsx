@@ -1,5 +1,7 @@
 export default function CatalogPage() {
     return (
-        <h1>Catalog</h1>
+        <section>
+            <h1>Catalog</h1>
+        </section>
     )
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header/Header";
+import { TanStackProvider } from "@/components/TanStackProvider/TanStackProvider";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -26,10 +27,12 @@ export default function RootLayout({ children }:{children: React.ReactNode}) {
   return (
     <html lang="uk" className={`${manrope.variable} ${inter.variable}`}>
       <body>
-        <Header/>
-        <main>
-          {children}
-        </main>
+        <TanStackProvider>
+          <Header/>
+          <main>
+            {children}
+          </main>
+        </TanStackProvider>
       </body>
     </html>
   );
