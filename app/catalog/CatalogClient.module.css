@@ -1,0 +1,25 @@
+.catalogGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 48px 32px;
+}
+
+.loadMore {
+  margin: 48px auto 0;
+  padding: 12px 32px;
+  font-weight: 600;
+  transition: 0.25s;
+  border: 1px solid #00aad4;
+  border-radius: 12px;
+  background-color: transparent;
+}
+
+.loadMore:hover:not(:disabled) {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+.loadMore:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

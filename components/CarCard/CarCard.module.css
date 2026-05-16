@@ -3,12 +3,13 @@
   /* align-items: center; */
   /* justify-content: space-between; */
   flex-direction: column;
+  height: 100%;
   /* gap: 24px; */
 
   /* border-radius: 16px; */
   /* padding: 16px; */
-  width: 276px;
-  height: 464px;
+  /* width: 276px;
+  height: 464px; */
 
   /* background-color: #fff; */
 }
@@ -24,14 +25,19 @@
 
 .titleRow {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  /* justify-content: space-between;
+  width: 100%; */
   margin-bottom: 8px;
+  align-items: baseline;
+  gap: 12px;
 }
 
 .cardTitle {
+  flex: 1;
+  min-width: 0;
   font-weight: 500;
   line-height: 1.25;
+  font-size: 16px;
 }
 
 .cardModel {
@@ -41,28 +47,52 @@
 .cardPrice {
   font-weight: 500;
   line-height: 1.25;
+  flex-shrink: 0;
 }
 
 .cardDescription {
-  font-size: 12px;
+  /* font-size: 12px;
   line-height: 1.33333;
   margin-bottom: 32px;
+  color: var(--gray); */
   /* border-radius: 8px;
   padding: 8px;
   width: 244px;
   height: 52px; */
   /* background-color: #f5f5f5; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 0;
+  margin: 0 0 32px;
+  color: var(--gray);
+  font-size: 12px;
+  line-height: 1.33;
+  max-width: 85%;
+}
+
+.cardDescription span:not(:last-child)::after {
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 16px;
+  margin: 0 6px;
+  background-color: var(--gray-light);
+  vertical-align: bottom;
 }
 
 .cardBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  /* display: inline-flex; */
+  text-align: center;
+  /* align-items: center;
+  justify-content: center; */
   font-weight: 600;
   line-height: 1.25;
   color: #fff;
   border-radius: 12px;
-  padding: 12px 88px;
-  min-width: 276px;
+  padding: 12px 32px;
+  /* min-width: 276px; */
+  width: 100%;
   background-color: #00aad4;
+  margin-top: auto;
 }

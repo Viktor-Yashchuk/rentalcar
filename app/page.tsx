@@ -38,7 +38,7 @@ export default function HomePage() {
 //         <section className={styles.heroSection}>
 //             <Image className={styles.heroBackground}
 //               src={Hero}
-//               alt='Фото автомобіля на головній сторінці'
+//               alt='Car photo on the main page'
 //             fill
 //             priority
 //               placeholder='blur'
