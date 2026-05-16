@@ -17,7 +17,8 @@ export interface Car {
         address: string;
     };
     rentalConditions: string[];
-    mileage: number;   
+    mileage: number;
+    stockNumber: number;
 }
 
 export interface CarsResponse {
@@ -50,3 +51,17 @@ export interface BookingPayload {
     email: string;
     comment?: string;
 }
+
+export interface FilterValues {
+    brand: string;
+    price: string;
+    minMileage: string;
+    maxMileage: string;
+}
+
+export const EMPTY_FILTERS: FilterValues = {
+    brand: "",
+    price: "",
+    minMileage: "",
+    maxMileage: ""
+};

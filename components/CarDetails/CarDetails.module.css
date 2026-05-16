@@ -1,0 +1,13 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 540px) minmax(0, 1fr);
+  gap: 80px;
+  align-items: start;
+}
+
+.media,
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}

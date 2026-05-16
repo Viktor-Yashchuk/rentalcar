@@ -2,20 +2,14 @@
 
 import { useState } from "react";
 import { useFilters } from "@/hooks/useFilters";
-
-interface FilterValues {
-    brand: string;
-    price: string;
-    minMileage: string;
-    maxMileage: string;
-}
+import { NumericFormat } from "react-number-format";
+import styles from './Filters.module.css'
+import { FilterValues, EMPTY_FILTERS } from "@/types/car";
 
 interface FiltersProps {
     initialValues: FilterValues;
     onApply: (values: FilterValues) => void;
 }
-
-const EMPTY: FilterValues = { brand: "", price: "", minMileage: "", maxMileage: "" };
 
 export default function Filters({initialValues, onApply}: FiltersProps) {
     const [values, setValues] = useState<FilterValues>(initialValues);
@@ -38,12 +32,6 @@ export default function Filters({initialValues, onApply}: FiltersProps) {
         e.preventDefault();
         onApply(values);
     };
-
-    const handleNumericChange = (field: "minMileage" | "maxMileage") =>
-        (e: React.ChangeEvent<HTMLInputElement>) => {
-            const onlyDigits = e.target.value.replace(/\D/g, "");
-            setValues((prev) => ({ ...prev, [field]: onlyDigits }));
-        };
     
     return (
         <form onSubmit={handleSubmit}>
@@ -69,25 +57,41 @@ export default function Filters({initialValues, onApply}: FiltersProps) {
             </select>
             <fieldset>
                 <legend>Car mileage / km</legend>
-                <input
-                    id="mileage-from"
-                    type="text"
-                    inputMode="numeric"
-                    aria-label="From"
-                    value={values.minMileage}
-                    onChange={handleNumericChange('minMileage')}
-                    placeholder="From" />
-                <input
-                    id="mileage-to"
-                    type="text"
-                    inputMode="numeric"
-                    aria-label="To"
-                    value={values.maxMileage}
-                    onChange={handleNumericChange('maxMileage')}
-                    placeholder="To" />
+                <div className={styles.inputWrap}>
+                    <span className={styles.prefix}>From</span>
+                    <NumericFormat
+                        isAllowed={(values) => values.value.length <= 6}
+                        thousandSeparator=","
+                        allowNegative={false}
+                        decimalScale={0}
+                        value={values.minMileage}
+                        onValueChange={(v) =>
+                            setValues((prev) => ({ ...prev, minMileage: v.value }))
+                        }
+                        id="mileage-from"
+                        aria-label="Mileage from"
+                        className={styles.input}
+                    />
+                </div>
+                <div className={styles.inputWrap}>
+                    <span className={styles.prefix}>To</span>
+                    <NumericFormat
+                        isAllowed={(values) => values.value.length <= 6}
+                        thousandSeparator=","
+                        allowNegative={false}
+                        decimalScale={0}
+                        value={values.maxMileage}
+                        onValueChange={(v) =>
+                            setValues((prev) => ({ ...prev, maxMileage: v.value }))
+                        }
+                        id="mileage-to"
+                        aria-label="Mileage to"
+                        className={styles.input}
+                    />
+                </div>
             </fieldset>
             <button type="submit">Search</button>
-            <button type="button" onClick={() => { setValues(EMPTY); onApply(EMPTY); }}>
+            <button type="button" onClick={() => { setValues(EMPTY_FILTERS); onApply(EMPTY_FILTERS); }}>
                 Reset
             </button>
         </form>
