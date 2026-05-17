@@ -44,7 +44,7 @@
   font-size: 60px;
   line-height: 1.2;
   text-align: center;
-  color: #fff;
+  color: var(--white);
   margin-bottom: 16px;
 }
 
@@ -53,7 +53,7 @@
   font-size: 24px;
   line-height: 1.33333;
   text-align: center;
-  color: #fff;
+  color: var(--white);
   margin-bottom: 40px;
 }
 
@@ -63,9 +63,9 @@
   justify-content: center;
   font-weight: 600;
   line-height: 1.25;
-  color: #fff;
+  color: var(--white);
   border-radius: 12px;
   padding: 12px 88px;
   min-width: 276px;
-  background-color: #00aad4;
+  background-color: var(--light-blue);
 }

@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
   gap: 32px;
-  /* align-items: start; */
   padding-top: 84px;
 }
 
