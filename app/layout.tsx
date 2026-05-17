@@ -19,6 +19,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rentalcar-eosin.vercel.app/"),
   title: { default: 'RentalCar', template: '%s | RentalCar' },
   description: 'Оренда автомобілів - каталог, фільтри, миттєве бронювання.',
 };
