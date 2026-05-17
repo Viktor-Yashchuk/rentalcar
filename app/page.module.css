@@ -2,7 +2,8 @@
   position: relative;
   overflow: hidden;
   margin: 0 auto;
-  height: 700px;
+  width: 100%;
+  min-height: 700px;
   padding-bottom: 60px;
   display: flex;
   flex-direction: column;

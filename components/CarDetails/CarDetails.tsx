@@ -32,37 +32,44 @@ export function CarDetails({ car }: { car: Car }) {
                 </div>
 
                 <div className={styles.info}>
-                    <h1>{car.brand} {car.model}, {car.year}<span>Article: {car.stockNumber}</span></h1>
-                    <p>{city}, {country}</p>
-                    <p className={styles.price}>${car.rentalPrice}</p>
-                    <p>{car.description}</p>
+                <div className={styles.carInf}>
+                    <h1>{car.brand} {car.model}, {car.year}<span> Article: {car.stockNumber}</span></h1>
+                        <p className={styles.location}>
+                        <svg className={styles.checkIcon} viewBox="0 0 32 32" width={16}><use href="/sprite.svg#icon-location" /></svg>
+                            {city}, {country}
+                        </p>
+                        <p className={styles.price}>${car.rentalPrice}</p>
+                        <p className={styles.description}>{car.description}</p>
+                    </div>
                     <section className={styles.blockWrap}>
                         <h2>Rental Conditions:</h2>
-                        <ul className={styles.conditionList}>
+                        <ul className={styles.list}>
                             {car.rentalConditions.map((condition) => (
-                                <li key={condition}>
+                                <li className={styles.item} key={condition}>
                                     <svg className={styles.checkIcon} viewBox="0 0 32 32" width={16}><use href="/sprite.svg#icon-check-circle" /></svg>
                                     <span>{condition}</span>
                                 </li>
                             ))}
                         </ul>
                     </section>
+                    <hr className={styles.line}></hr>
                     <section className={styles.blockWrap}>
                         <h2>Car Specifications:</h2>
-                        <ul className={styles.specsList}>
+                        <ul className={styles.list}>
                             {specs.map(({ label, value, icon }) => (
-                                <li key={label}>
+                                <li className={styles.item} key={label}>
                                     <svg viewBox="0 0 32 32" width={16}><use href={`/sprite.svg#${icon}`} /></svg>
                                     <span>{label}: {value}</span>
                                 </li>
                             ))}
                         </ul>
                     </section>
+                    <hr className={styles.line}></hr>
                     <section className={styles.blockWrap}>
                         <h2>Features</h2>
-                        <ul className={styles.featuresList}>
+                        <ul className={styles.list}>
                             {car.features.map((feature) => (
-                                <li key={feature}>
+                                <li className={styles.item} key={feature}>
                                     <svg className={styles.checkIcon} viewBox="0 0 32 32" width={16}><use href="/sprite.svg#icon-check-circle" /></svg>
                                     <span>{feature}</span>
                                 </li>

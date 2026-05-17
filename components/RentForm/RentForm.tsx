@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import styles from './RentForm.module.css';
+import { BookingPayload } from "@/types/car";
 
 interface RentFormValues {
     name: string;
@@ -25,7 +26,7 @@ export default function RentForm({ carId }: RentFormProps) {
     } = useForm<RentFormValues>({ mode: 'onBlur' });
 
     const mutation = useMutation({
-        mutationFn: (payload: RentFormValues) => submitBooking(carId, payload),
+        mutationFn: (payload: BookingPayload) => submitBooking(carId, payload),
         onSuccess: () => {
             toast.success("Booking request sent! We'll contact you soon.");
             reset();
@@ -33,12 +34,20 @@ export default function RentForm({ carId }: RentFormProps) {
     });
 
     const onSubmit: SubmitHandler<RentFormValues> = (values) => {
-        mutation.mutate(values);
+        const payload: BookingPayload = {
+            name: values.name,
+            email: values.email,
+        };
+
+        if (values.comment?.trim()) {
+            payload.comment = values.comment.trim();
+        }
+        mutation.mutate(payload);
     };
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
-            <h3>Book your car now</h3>
+            <h2>Book your car now</h2>
             <p>Stay connected! We are always ready to help you.</p>
             <input
                 type="text"
@@ -67,7 +76,7 @@ export default function RentForm({ carId }: RentFormProps) {
             
             <textarea
                 placeholder="Comment"
-                rows={4}
+                rows={3}
                 {...register("comment", { maxLength: 500 })}
             />
 
