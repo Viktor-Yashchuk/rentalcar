@@ -22,6 +22,7 @@
 
 .form input {
   margin-bottom: 16px;
+  width: 100%;
 }
 
 .form textarea {
@@ -43,9 +44,16 @@
   border-color: var(--light-blue);
 }
 
+.inputWrap {
+  position: relative;
+  display: flex;
+}
+
 .error {
   color: #c00;
   font-size: 12px;
+  position: absolute;
+  bottom: 1px;
 }
 
 .form button {

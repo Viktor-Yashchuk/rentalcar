@@ -1,19 +1,16 @@
+import { HashLoader } from "react-spinners";
 import styles from "./Loader.module.css";
 
 interface LoaderProps {
-  label?: string;
   fullPage?: boolean;
+  label?: string;
 }
 
-export function Loader({ label = "Loading...", fullPage = false }: LoaderProps) {
+export function Loader({ fullPage = false, label }: LoaderProps) {
     return (
-        <div
-            className={`${styles.wrapper} ${fullPage ? styles.fullPage : ""}`}
-            role="status"
-            aria-live="polite"
-        >
-            <span className={styles.spinner} aria-hidden="true" />
-            <span className={styles.label}>{label}</span>
+        <div className={`${styles.wrapper} ${fullPage ? styles.fullPage : ""}`}>
+            <HashLoader color="var(--light-blue)" size={60} />
+            {label && <p className={styles.label}>{label}</p>}
         </div>
     );
 }

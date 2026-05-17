@@ -7,6 +7,7 @@ import CarCard from "@/components/CarCard/CarCard";
 import styles from './CatalogClient.module.css';
 import { useState } from "react";
 import Filters from "@/components/Filters/Filters";
+import { Loader } from "@/components/Loader/Loader";
 
 export function CatalogClient() {
     const [filters, setFilters] = useState<FilterValues>(EMPTY_FILTERS);
@@ -38,7 +39,7 @@ export function CatalogClient() {
         lastPage.page < lastPage.totalPages ? lastPage.page + 1 : undefined,
 });
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <Loader />;
     if (isError) return <p>Something went wrong...</p>;
 
     const cars = data?.pages.flatMap((page) => page.cars) ?? [];
