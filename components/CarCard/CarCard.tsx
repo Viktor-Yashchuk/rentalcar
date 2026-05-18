@@ -12,7 +12,6 @@ export default function CarCard({ car }: { car: Car }) {
                 <Image className={styles.cardImg}
                     src={car.img || FALLBACK}
                     alt={`photo ${car.brand} ${car.model}`}
-                    // placeholder="blur"
                     fill
                     sizes="(max-width: 260px) 100vw, 280px">
                 </Image>
@@ -24,6 +23,7 @@ export default function CarCard({ car }: { car: Car }) {
             <p className={styles.cardDescription}>
                 <span>{car.location.city}</span>
                 <span>{car.location.country}</span>
+                <span>{car.rentalCompany}</span>
                 <span>{car.type}</span>
                 <span>{mileage} km</span>
             </p>

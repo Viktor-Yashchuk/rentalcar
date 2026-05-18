@@ -3,7 +3,7 @@
   overflow: hidden;
   margin: 0 auto;
   width: 100%;
-  min-height: 700px;
+  min-height: calc(100vh - 68px);
   padding-bottom: 60px;
   display: flex;
   flex-direction: column;
