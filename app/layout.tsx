@@ -19,9 +19,26 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rentalcar-eosin.vercel.app/"),
-  title: { default: 'RentalCar', template: '%s | RentalCar' },
-  description: 'Оренда автомобілів - каталог, фільтри, миттєве бронювання.',
+  metadataBase: new URL('https://rentalcar-eosin.vercel.app'),
+
+  title: 'RentalCar | Car Rental Service',
+  description: 'A platform for renting cars with ease and convenience',
+  icons: {
+    icon: '/favicon.ico',
+  },
+  openGraph: {
+    title: 'RentalCar | Car Rental Service',
+    description: 'A platform for renting cars with ease and convenience',
+    url: 'https://rentalcar-eosin.vercel.app',
+    images: [
+      {
+        url: '/hero.webp',
+        width: 1200,
+        height: 630,
+        alt: 'RentalCar Hero Image',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }:{children: React.ReactNode}) {
