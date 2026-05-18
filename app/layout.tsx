@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     url: 'https://rentalcar-eosin.vercel.app',
     images: [
       {
-        url: '/hero.webp',
+        url: '/Hero.webp',
         width: 1200,
         height: 630,
         alt: 'RentalCar Hero Image',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }:{children: React.ReactNode}) {
   return (
-    <html lang="uk" className={`${manrope.variable} ${inter.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
       <body>
         <TanStackProvider>
           <Header/>

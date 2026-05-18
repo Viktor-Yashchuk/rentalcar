@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RentalCar
+
+A frontend application for a car rental service, built with Next.js and TypeScript. Integrated with the GoIT public API (`https://car-rental-api.goit.study`).
+
+- **Live demo:** https://rentalcar-eosin.vercel.app
+- **Design:** [Figma](https://www.figma.com/design/A25LdVK3gZOPJaedrkTwWQ/Rental-Car)
+
+## Tech Stack
+
+- **Next.js 16** (App Router) + **TypeScript**
+- **TanStack Query** — caching, `useInfiniteQuery` for paginated catalog, `useMutation` for booking
+- **Axios** — HTTP client
+- **React Hook Form** — form state and validation
+- **react-select** — custom dropdowns for filters
+- **react-number-format** — mileage input formatting
+- **react-hot-toast** — toast notifications
+- **react-spinners** — loading indicators
+- **CSS Modules** — scoped styling
+- **next/font** — optimized self-hosted fonts (Manrope, Inter)
+
+## Features
+
+- **Home page** with a full-screen hero section and a CTA button to the catalog.
+- **Catalog page** with paginated cars list:
+  - Backend filtering by brand, hourly price, and mileage range (From / To).
+  - "Load more" pagination that preserves the active filters.
+  - Each card has a "Read more" button that opens the car details in a new tab.
+- **Car details page** with full information, photo, and a rental form.
+- **Booking form** with validation (required name, valid email, optional comment) and toast notifications on submit.
+- **SEO:** dynamic `<title>`, `<meta description>`, and Open Graph tags for every page.
+- **Loaders** shown during async operations.
 
 ## Getting Started
 
-First, run the development server:
+Requires Node.js 18.18+.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`bash
+git clone https://github.com/Viktor-Yashchuk/rentalcar.git
+cd rentalcar
+npm install
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a `.env.local` file in the project root:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+\`\`\`
+NEXT_PUBLIC_API_URL=https://car-rental-api.goit.study
+\`\`\`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Available Scripts
 
-## Learn More
+| Command         | Description                  |
+| --------------- | ---------------------------- |
+| `npm run dev`   | Start the development server |
+| `npm run build` | Build for production         |
+| `npm run start` | Run the production build     |
+| `npm run lint`  | Run ESLint                   |
 
-To learn more about Next.js, take a look at the following resources:
+The app will be available at http://localhost:3000.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+\`\`\`
+app/
+├── catalog/
+│ ├── [carId]/
+│ │ ├── page.tsx
+│ │ ├── loading.tsx
+│ │ └── not-found.tsx
+│ ├── CatalogClient.tsx
+│ └── page.tsx
+├── layout.tsx
+├── page.tsx
+└── globals.css
 
-## Deploy on Vercel
+components/ # Header, CarCard, CarDetails, Filters, CustomSelect, RentForm, Loader, TanStackProvider
+hooks/ # useFilters
+lib/api/ # axios instance and API functions
+types/ # shared TypeScript interfaces
+public/ # sprite.svg, Hero.webp, favicon, icons
+\`\`\`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Author
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Viktor Yashchuk** — [GitHub](https://github.com/Viktor-Yashchuk)

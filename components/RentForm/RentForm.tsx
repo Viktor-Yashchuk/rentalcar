@@ -6,7 +6,6 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import styles from './RentForm.module.css';
 import { BookingPayload } from "@/types/car";
-import { Loader } from "../Loader/Loader";
 
 interface RentFormValues {
     name: string;
@@ -31,6 +30,9 @@ export default function RentForm({ carId }: RentFormProps) {
         onSuccess: () => {
             toast.success("Booking request sent! We'll contact you soon.");
             reset();
+        },
+        onError: () => {
+            toast.error("Could not send your booking. Please try again.");
         },
     });
 

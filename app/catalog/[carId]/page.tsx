@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getCarById } from "@/lib/api/api";
-import { CarDetails } from "../../../components/CarDetails/CarDetails";
+import { CarDetails } from "@/components/CarDetails/CarDetails";
+
 
 interface PageProps {
     params: Promise<{ carId: string }>;
