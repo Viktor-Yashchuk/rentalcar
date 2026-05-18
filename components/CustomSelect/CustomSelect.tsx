@@ -3,18 +3,18 @@
 import Select, { StylesConfig, components, DropdownIndicatorProps } from 'react-select';
 
 interface Option {
-  value: string;
-  label: string;
-  menuLabel?: string;
+    value: string;
+    label: string;
+    menuLabel?: string;
 }
 
 interface SelectProps {
-  id?: string;
-  value: string;
-  placeholder: string;
-  options: Option[];
-  onChange: (value: string) => void;
-  className?: string;
+    id?: string;
+    value: string;
+    placeholder: string;
+    options: Option[];
+    onChange: (value: string) => void;
+    className?: string;
     formatOptionLabel?: (option: Option, meta: { context: 'menu' | 'value' }) => React.ReactNode;
     isDisabled?: boolean;
 }
@@ -35,17 +35,16 @@ const DropdownIndicator = (props: DropdownIndicatorProps<Option, false>) => {
 };
 
 export default function CustomSelect({
-  id,
-  value,
-  placeholder,
-  options,
-  onChange,
-  className = '',
+    id,
+    value,
+    placeholder,
+    options,
+    onChange,
+    className = '',
     formatOptionLabel,
-  isDisabled,
+    isDisabled,
 }: SelectProps) {
-  const selectedOption = options.find((o) => o.value === value) || null;
-
+    const selectedOption = options.find((o) => o.value === value) || null;
     const handleChange = (option: Option | null) => {
         onChange(option ? option.value : '');
     };
